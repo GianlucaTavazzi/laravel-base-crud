@@ -4,36 +4,154 @@
   box-sizing: border-box;
 }
 
-body {
+header {
   display: flex;
-  height: 100vh;
+  height: 10vh;
+  justify-content: center;
+  align-items: center;
 }
 
-table {
+header li {
+  list-style-type: none;
+}
+
+header li a {
+  text-decoration: none;
+  color: black;
+}
+
+.tab-container {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  width: 80%;
   margin: auto;
+}
+
+.tab-container .tab-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.tab-container .tab-header a {
+  text-decoration: none;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: yellowgreen;
+}
+
+.tab-container table {
+  margin: auto;
+  margin-top: 50px;
   border: 1px solid black;
   border-collapse: collapse;
 }
 
-table thead th {
+.tab-container table thead th {
   padding: 10px;
   border: 1px solid black;
   border-collapse: collapse;
   text-align: left;
 }
 
-table tbody tr td {
+.tab-container table thead th:last-of-type {
+  text-align: center;
+}
+
+.tab-container table tbody tr td {
   text-align: left;
   padding: 15px 10px;
   padding-right: 70px;
   border: 1px solid black;
 }
 
-table tbody tr td a {
+.tab-container table tbody tr td:last-of-type {
+  padding: 15px 50px;
+  text-align: center;
+}
+
+.tab-container table tbody tr td:last-of-type form {
+  display: inline;
+}
+
+.tab-container table tbody tr td:last-of-type form input {
+  background-color: red;
+  border: none;
+  font-size: 16px;
+  border-radius: 3px;
+  height: 29px;
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+.tab-container table tbody tr td:last-of-type form input:active {
+  color: black;
+}
+
+.tab-container table tbody tr td a {
   text-decoration: none;
   color: black;
-  background-color: lightblue;
   padding: 5px;
   border-radius: 3px;
+}
+
+.tab-container table tbody tr td a.details {
+  background-color: lightblue;
+  margin-right: 10px;
+}
+
+.tab-container table tbody tr td a.modify {
+  background-color: green;
+  margin-right: 10px;
+}
+
+.tab-container table tbody tr td a.delete {
+  background-color: red;
+}
+
+.form-container {
+  height: 90vh;
+  width: 50%;
+  margin: auto;
+  margin-top: 70px;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container form .form-section {
+  margin-bottom: 25px;
+}
+
+.form-container form .form-section input {
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 15px;
+  display: block;
+  width: 100%;
+}
+
+.form-container form .form-section input:focus {
+  outline-style: none;
+}
+
+.form-container form .form-section p {
+  font-size: 13px;
+  margin-top: 5px;
+  color: red;
+}
+
+.form-container form .form-submit input {
+  width: 25%;
+  background-color: yellowgreen;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
 }
 

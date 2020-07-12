@@ -25,7 +25,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return view('students.create');
     }
 
     /**
@@ -36,7 +36,17 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required|max:255',
+            'lastname'=>'required|max:255',
+            'number'=>'required|numeric|min:999|unique:students',
+            'email'=>'required|max:255|unique:students',
+        ]);
+        $dati = $request->all();
+        $nuovo_studente = new Student();
+        $nuovo_studente -> fill($dati);
+        $nuovo_studente->save();
+        return redirect()->route('products.index');
     }
 
     /**
@@ -48,7 +58,7 @@ class StudentController extends Controller
     public function show($id)
     {
         $studente = Student::find($id);
-        return view('students.show', compact('studente')); 
+        return view('students.show', compact('studente'));
     }
 
     /**
@@ -59,7 +69,11 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $studente = Student::find($id);
+        if ($studente) {
+            return view('students.edit', compact('studente'));
+        }
+        return abort('404');
     }
 
     /**
@@ -71,7 +85,16 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name'=>'required|max:255',
+            'lastname'=>'required|max:255',
+            'number'=>'required|numeric|min:999',
+            'email'=>'required|max:255',
+        ]);
+        $dati = $request->all();
+        $studente = Student::find($id);
+        $studente->update($dati);
+        return redirect()->route('products.index');
     }
 
     /**
@@ -82,6 +105,8 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $studente = Student::find($id);
+        $studente->delete();
+        return redirect()->route('products.index');
     }
 }

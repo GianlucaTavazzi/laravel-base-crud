@@ -88,8 +88,8 @@ class StudentController extends Controller
         $request->validate([
             'name'=>'required|max:255',
             'lastname'=>'required|max:255',
-            'number'=>'required|numeric|min:999',
-            'email'=>'required|max:255',
+            'number'=>'required|numeric|min:999|unique:students,number' . $id,
+            'email'=>'required|max:255|unique:students,email' . $id,
         ]);
         $dati = $request->all();
         $studente = Student::find($id);
